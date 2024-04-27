@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %} Sign Up {% endblock title %}
+
+
+{% block heading %} Sign Up {% endblock heading %}
+
+
+{% block content %}
+
+        
+    {% if messages %}
+        {% for message in messages %}
+            <p {% if message.tags %} class="alert alert-{{message.tags}} alert-dismissible fade show" {% endif %}>
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </p>
+        {% endfor %}
+    {% endif %}
+
+
+    {% for fm in form %}
+        <p>{{fm.label_tag}} {{fm}} {{fm.errors | striptags}}</p>
+    {% endfor %}
+
+    <input type="submit" value="Submit" class="btn btn-success">
+
+    <p class="mt-2">Do have an account? <a href="{% url 'login' %}">Login</a></p>
+
+    
+{% endblock content %}

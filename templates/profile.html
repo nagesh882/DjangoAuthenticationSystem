@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %} Profile {% endblock title %}
+
+
+{% block heading %} User Profile {% endblock heading %}
+
+
+{% block content %}
+    <p class="d-flex justify-content-end mb-3" style="color:#36454F;">Welcome&nbsp;<span><strong>{{user}}</strong> | <a href="{% url 'logout' %}" class="text-decoration-none text-danger">Logout</a></span></p>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p {% if message.tags %} class="alert alert-{{message.tags}} alert-dismissible fade show" {% endif %}>
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </p>
+        {% endfor %}
+    {% endif %}
+
+    
+    {% for fm in form %}
+        <p>{{fm.label_tag}} {{fm}} {{fm.errors | striptags}}</p>
+    {% endfor %}
+
+    <input type="submit" value="Save" class="btn btn-success">
+
+    <p class="mt-2">Do you want to change your password? <a href="{% url 'passchange' %}">change password</a></p>
+
+{% endblock content %}

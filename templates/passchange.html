@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} Change Password {% endblock title %}
+
+
+{% block heading %} Change Password {% endblock heading %}
+
+
+{% block content %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <p {% if message.tags %} class="alert alert-{{message.tags}} alert-dismissible fade show" {% endif %}>
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </p>
+        {% endfor %}
+    {% endif %}
+
+
+    {% for fm in form %}
+        <p>{{fm.label_tag}} {{fm}} {{fm.errors | striptags}}</p><br />
+    {% endfor %}
+
+    <input type="submit" value="Save" class="btn btn-success">
+        
+    
+{% endblock content %}

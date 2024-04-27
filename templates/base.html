@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block tilte %} {% endblock tilte %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-8 mx-auto offset-2 justify-content-center">
+                <div class="card shadow-lg">
+                    <div class="card-title"><h1 class="display-6 text-center mt-3 mb-3 text-success">{% block heading %} {% endblock heading %}</h1></div>
+                    <div class="card-body">
+                        <form method="POST" novalidate>
+                            {% csrf_token %}
+
+                            {% block content %}
+                            
+                            
+                            {% endblock content %}
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>
